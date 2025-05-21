@@ -1,0 +1,92 @@
+# 🐍 Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.env.local
+*.DS_Store
+
+# 📦 Python dependency files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 🐳 Docker
+*.log
+docker-compose.override.yml
+
+# 📦 Node.js / Frontend dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+.yarn/
+.pnpm-debug.log
+
+# 🗄 IDE / Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 📦 Environment and credentials
+.env
+.env.*
+!.env.example
+
+# 🔍 System files
+Thumbs.db
+.DS_Store
+
+# ⚙️ Production build files
+/dist/
+build/
+coverage/
+
+# ⚙️ Logs and reports
+*.log
+logs/
+*.out
+*.pid
+
+# 🔥 Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.old
+
+# 🐍 Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# 🔍 Test and coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+pytest_cache/
+coverage.xml
+nosetests.xml
+junit.xml
+
+# 🧪 Linting/Static Analysis Reports
+pylint-report.txt
+mypy_cache/
+.pyre/
+
+# ⚙️ OS / Editor settings
+.DS_Store
+*.swp
+*.swo
+
+# 💥 Production deployments
+*.sqlite3
+*.db
+instance/
+secrets.json
+/uploads
+/migrations
+/instance
+app/archive

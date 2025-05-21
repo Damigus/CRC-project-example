@@ -1,0 +1,164 @@
+/* Czcionki */
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf');
+}
+
+/* Style główne */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Zapobiega "uciekaniu" elementów poza kontener */
+}
+
+body, html {
+  height: 100%;
+  font-family: Poppins-Regular, sans-serif; /* Główna czcionka strony */
+}
+
+/* Layout strony logowania */
+.limiter {
+  width: 100%;
+  margin: 0 auto; /* Wyśrodkowanie kontenera */
+}
+
+.container-login100 {
+  width: 100%;
+  min-height: 100vh; /* Pełna wysokość widoku */
+  display: flex;
+  justify-content: center; /* Wyśrodkowanie poziome */
+  align-items: center; /* Wyśrodkowanie pionowe */
+  padding: 15px;
+  background: linear-gradient(-100deg, orange, blue); /* Gradient tła */
+}
+
+/* Główny kontener formularza i obrazka */
+.wrap-login100 {
+  width: 960px;
+  background: #fff;
+  border-radius: 10px; /* Zaokrąglone rogi */
+  overflow: hidden; /* Ukrycie przekraczających elementów */
+  display: flex;
+  justify-content: space-between; /* Rozłożenie elementów */
+  align-items: center;
+  padding: 100px; /* Wewnętrzny odstęp */
+}
+
+/* Sekcja z obrazkiem */
+.login100-pic {
+  width: 316px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login100-pic img {
+  max-width: 100%; /* Responsywny obrazek */
+  height: auto;
+  display: block;
+}
+
+/* Formularz */
+.login100-form {
+  width: 100%; /* Pozwala na rozszerzenie tytułu */
+  max-width: 400px; /* Możesz dostosować */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Zapewnia środkowanie */
+}
+
+.login100-form-title {
+  font-family: Poppins-Bold;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding-bottom: 30px;
+}
+
+/* Przyciski */
+.container-login100-form-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login100-form-btn {
+  font-family: Montserrat-Bold;
+  font-size: 20px;
+  color: #fff;
+  text-transform: uppercase; /* Wielkie litery */
+  width: 100%;
+  height: 60px;
+  border-radius: 25px; /* Zaokrąglony przycisk */
+  background: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s; /* Animacja hover */
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.login100-form-btn:hover {
+  background: #333; /* Kolor po najechaniu */
+}
+
+/* Responsywność */
+@media (max-width: 990px) {
+  .wrap-login100 {
+    max-width: 600px;
+    padding: 40px;
+    flex-direction: column; /* Układ pionowy na mobile */
+    align-items: center;
+  }
+
+  .login100-pic {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px; /* Odstęp pod obrazkiem */
+  }
+
+  .login100-form {
+    width: 100%;
+  }
+}
+
+/* Linki */
+a {
+  text-decoration: none;
+}
+
+.login-button {
+  color: white;
+}
+
+/* Stopka */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1e3a8a;
+  color: white;
+}
+
+footer a {
+  color: #f97316;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+

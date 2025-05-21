@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logowanie Nowa Generacja</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+  <link rel="icon" type="image/png" href="../static/images/nowa-generacja.jpg"/>
+</head>
+
+<body>
+  <!-- Główny kontener strony -->
+  <div class="limiter">
+    <div class="container-login100">
+      <!-- Kontener formularza i logo -->
+      <div class="wrap-login100">
+        
+        <!-- Sekcja z logo -->
+        <div class="login100-pic js-tilt" data-tilt>
+          <img src="../static/images/nowa-generacja.jpg" alt="Nowa Generacja Logo">
+        </div>
+
+        <!-- Sekcja logowania -->
+        <div class="login100-form">
+          <!-- Nagłówek -->
+          <span class="login100-form-title">
+            Logowanie do Krajowego Rejestru Członków Nowej Generacji
+          </span>
+
+          <!-- Przycisk logowania przez Google -->
+          <div class="container-login100-form-btn">
+            <button type="button" class="login100-form-btn" id="loginButton">
+              Zaloguj się przez Google
+            </button>
+          </div>
+
+          <!-- Informacja o zalogowanym użytkowniku -->
+          <p id="userInfo"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stopka -->
+  <footer>
+    <p>Kontakt: <a href="mailto:kontakt@nowageneracja.org">kontakt@nowageneracja.org</a></p>
+  </footer>
+
+  <!-- Załaduj skrypt JavaScript -->
+  <script src="../static/js/login.js"></script>
+</body>
+</html>

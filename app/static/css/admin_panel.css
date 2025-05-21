@@ -1,0 +1,417 @@
+/*---------------------------------------
+ * ADMIN PANEL - ZMIENNE I KONFIGURACJA
+ *---------------------------------------*/
+
+/* Paleta kolorów i podstawowe zmienne dla panelu administratora */
+:root {
+    /* Kolory podstawowe - fioletowo-niebieska paleta */
+    --primary-color: #3f51b5;    /* Główny kolor (fioletowy) */
+    --primary-light: #4657b3;    /* Jaśniejsza wersja głównego koloru */
+    --primary-dark: #f39c12;     /* Ciemniejszy odcień głównego koloru */
+    --accent-color: #ff4081;     /* Kolor akcentujący (różowy) */
+    
+    /* Kolory statusów */
+    --success-color: #4CAF50;    /* Zielony - akcje pozytywne, sukces */
+    --danger-color: #e74c3c;     /* Czerwony - akcje usuwania, błędy */
+    --warning-color: #f39c12;    /* Pomarańczowy - ostrzeżenia, uwagi */
+    
+    /* Odcienie szarości */
+    --white: #ffffff;
+    --gray-100: #f8f9fa;         /* Najjaśniejszy szary - tło sekcji */
+    --gray-200: #e9ecef;         /* Jasny szary - obramowania, separatory */
+    --gray-300: #dee2e6;         /* Szary - obramowania pól formularzy */
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;         /* Średni szary - ikony, tekst poboczny */
+    --gray-800: #343a40;         /* Ciemny szary - tekst główny */
+    
+    /* Wspólne style */
+    --border-radius: 8px;        /* Zaokrąglenie rogów elementów */
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Standardowy cień */
+}
+
+/*---------------------------------------
+ * UKŁAD GŁÓWNY
+ *---------------------------------------*/
+
+/* Nadpisanie maksymalnej wysokości z głównego CSS */
+main {
+    max-height: none !important; /* Zapewnia pełną wysokość panelu */
+}
+
+/* Nagłówek panelu administratora */
+.admin-header {
+    display: flex;
+    position: sticky !important;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--gray-200); /* Separator pod nagłówkiem */
+    background-color: var(--white); /* Dodany kolor tła, aby przykryć zawartość podczas przewijania */
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    top: 81px;
+    z-index: 99999;
+}
+
+/* Responsywność nagłówka - układ poziomy na większych ekranach */
+@media (min-width: 1060px) {
+    .admin-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Tytuł sekcji admina */
+.admin-title {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin: 0;
+    padding: 0;
+}
+
+/*---------------------------------------
+ * WYSZUKIWARKA
+ *---------------------------------------*/
+
+/* Kontener wyszukiwarki - pozycjonowanie relatywne dla ikon */
+.search-container {
+    position: relative;
+    flex-grow: 1;            /* Rozszerza się, aby wypełnić dostępną przestrzeń */
+    max-width: 500px;        /* Maksymalna szerokość */
+}
+
+/* Pole wyszukiwania */
+.admin-search-bar {
+    width: 90%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem; /* Odstęp z lewej dla ikony */
+    border: 2px solid var(--gray-300);
+    border-radius: 50px;     /* Zaokrąglenie w stylu "pill" */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Stan aktywny pola wyszukiwania */
+.admin-search-bar:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2); /* Subtelny cień przy fokusie */
+}
+
+/* Ikona wyszukiwarki - pozycjonowana bezwzględnie wewnątrz kontenera */
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%); /* Wyśrodkowanie w pionie */
+    color: var(--gray-500);
+}
+
+/*---------------------------------------
+ * SEKCJE PANELU ADMINISTRATORA
+ *---------------------------------------*/
+
+/* Kontener dla wszystkich sekcji */
+.admin-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Odstęp między sekcjami */
+}
+
+/* Pojedyncza sekcja */
+.admin-section {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Zapobiega wychodzeniu cienia poza zaokrąglone rogi */
+    box-shadow: var(--box-shadow);
+}
+
+/* Przyciski rozwijające sekcje */
+.admin-toggle-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* Efekt hover dla przycisków rozwijających */
+.admin-toggle-btn:hover {
+    background-color: var(--primary-light);
+}
+
+/* Ikona w przycisku rozwijającym */
+.admin-toggle-btn .fas {
+    margin-right: 0.5rem;
+}
+
+/* Ikona strzałki w przycisku rozwijającym */
+.toggle-icon {
+    margin-left: auto;
+    transition: transform 0.3s ease; /* Płynna animacja obrotu */
+}
+
+/* Animacja ikony przy rozwinięciu */
+.admin-toggle-btn:focus .toggle-icon,
+.admin-section:not(.hidden-table) .toggle-icon {
+    transform: rotate(180deg); /* Obraca ikonę strzałki */
+}
+
+/* Zawartość sekcji */
+.admin-section-content {
+    background-color: var(--gray-100);
+    border-top: none;
+}
+
+/* Ukryta sekcja tabeli */
+.hidden-table {
+    display: none;
+}
+
+/*---------------------------------------
+ * FORMULARZE W PANELU ADMINA
+ *---------------------------------------*/
+
+/* Formularz w okrągłym stylu */
+.circle-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Delikatniejszy cień */
+}
+
+/* Grupa formularza - pojedyncze pole z etykietą */
+.form-group {
+    flex: 1 1 200px;         /* Elastyczne szerokości, minimum 200px */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Etykiety pól formularza */
+.form-group label {
+    font-weight: 600;
+    color: var(--gray-800);
+    font-size: 0.9rem;
+}
+
+/* Pola wprowadzania danych */
+.circle-input {
+    padding: 0.8rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Stan aktywny pól wprowadzania */
+.circle-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2);
+}
+
+/* Przycisk dodawania w formularzu */
+.circle-add-btn {
+    padding: 1rem 1.5rem;
+    background-color: var(--success-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 35px;        /* Wyrównanie z innymi elementami formularza */
+    align-self: center;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Efekt hover dla przycisku dodawania */
+.circle-add-btn:hover {
+    background-color: #45a049; /* Ciemniejszy zielony */
+}
+
+
+/*---------------------------------------
+ * PRZYCISKI AKCJI
+ *---------------------------------------*/
+
+/* Podstawowy styl przycisków akcji */
+.action-btn {
+    padding: 0.5rem 1rem;
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+/* Przycisk usuwania */
+.delete-btn {
+    background-color: var(--danger-color);
+}
+
+.delete-btn:hover {
+    background-color: #c0392b; /* Ciemniejszy czerwony */
+}
+
+/* Przycisk odblokowania */
+.unban-btn {
+    background-color: var(--warning-color);
+}
+
+.unban-btn:hover {
+    background-color: #e67e22; /* Ciemniejszy pomarańczowy */
+}
+
+/* Przycisk podglądu */
+.view-btn {
+    padding: 0.4rem 0.8rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+    background-color: var(--primary-light);
+}
+
+/*---------------------------------------
+ * TABELE DANYCH
+ *---------------------------------------*/
+
+/* Podstawowe style tabeli */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+/* Kontener tabeli z obsługą przewijania */
+.table-wrapper {
+    position: relative;
+    overflow-x: auto;        /* Poziomy scroll dla szerokich tabel */
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Efekt hover dla wierszy tabeli */
+tbody tr:hover {
+    background-color: rgba(63, 81, 181, 0.05); /* Subtelne podświetlenie */
+}
+
+/* Responsywność tabel na mniejszych ekranach */
+@media (max-width: 992px) {
+    .table-wrapper {
+        overflow-x: auto;
+    }
+    
+    table {
+        min-width: 1000px; /* Zapewnia, że tabela nie zostanie ściśnięta */
+    }
+}
+
+/*---------------------------------------
+ * SORTOWANIE TABEL
+ *---------------------------------------*/
+
+/* Nagłówki kolumn z możliwością sortowania */
+.sortable {
+    position: relative;
+    padding-right: 25px !important; /* Miejsce na ikonę sortowania */
+}
+
+/* Ikona sortowania */
+.sort-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-500);
+    transition: color 0.2s ease;
+}
+
+/* Efekt hover dla ikon sortowania */
+th.sortable:hover .sort-icon {
+    color: var(--primary-color);
+}
+
+/* Style dla aktywnych ikon sortowania */
+.fa-sort-up, 
+.fa-sort-down {
+    color: var(--primary-color);
+}
+
+/*---------------------------------------
+ * STRONA ODMOWY DOSTĘPU
+ *---------------------------------------*/
+
+/* Kontener strony odmowy dostępu */
+.access-denied {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+/* Ikona odmowy dostępu */
+.access-denied i {
+    font-size: 4rem;
+    color: var(--danger-color);
+    margin-bottom: 1rem;
+}
+
+/* Nagłówek strony odmowy dostępu */
+.access-denied h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+}
+
+/* Tekst na stronie odmowy dostępu */
+.access-denied p {
+    margin-bottom: 2rem;
+    color: var(--gray-500);
+    font-size: 1.1rem;
+}
+
+/* Przycisk wylogowania */
+.logout-btn {
+    padding: 0.8rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;     /* Zaokrąglenie w stylu "pill" */
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: var(--primary-dark);
+}
