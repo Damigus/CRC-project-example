@@ -60,6 +60,13 @@ The project is divided into two main parts:
      docker-compose up -d mssql
      ```
    - Or use your existing MS SQL Server installation
+  
+5.5 Create DATABASE:
+   - In CMD:
+     ```bash
+     CREATE DATABASE PartyMembersDB;
+     GO
+     ```
 
 6. Wait about 30 seconds for SQL Server to initialize, then start the backend:
    ```bash
