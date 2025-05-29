@@ -64,6 +64,7 @@ The project is divided into two main parts:
    5.5 Create DATABASE:
       - In CMD:
         ```bash
+        sqlcmd -S localhost,1433 -U sa -P "YourStrong!Passw0rd"
         CREATE DATABASE PartyMembersDB;
         GO
         ```
