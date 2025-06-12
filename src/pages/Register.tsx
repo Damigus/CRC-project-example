@@ -37,7 +37,7 @@ const Register = () => {
       setIsLoading(true);
       await register(username, email, password);
       toast.success('Rejestracja udana!');
-      navigate('/dashboard');
+      navigate('/');
     } catch (error: any) {
       // Error is already handled in the auth context
     } finally {
