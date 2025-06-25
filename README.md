@@ -24,6 +24,7 @@ The project is divided into two main parts:
 - Node.js (v14+)
 - Python (v3.8+)
 - MS SQL Server 2019 (or Docker)
+- OBDC Driver 17 for SQL Server
 
 ## Installation Instructions
 
